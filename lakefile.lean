@@ -4,4 +4,4 @@ open Lake DSL
 package mathResearch where
 
 lean_lib MathResearch where
-  roots := #[`MathResearch.Smoke]
+  roots := #[`MathResearch.Smoke, `MathResearch.Erdos64.PairPacking]
