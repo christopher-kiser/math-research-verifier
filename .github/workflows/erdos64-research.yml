@@ -1,0 +1,26 @@
+name: Erdős 64 exhaustive research regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ResearchChecks/Erdos64/**'
+      - '.github/workflows/erdos64-research.yml'
+  pull_request:
+    paths:
+      - 'ResearchChecks/Erdos64/**'
+      - '.github/workflows/erdos64-research.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  p13-attachment-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile exact enumerator
+        run: g++ -std=c++17 -O3 -Wall -Wextra -pedantic ResearchChecks/Erdos64/p13_four_neighbors.cpp -o /tmp/p13_four_neighbors
+      - name: Exhaustive regression with exact counts
+        run: /tmp/p13_four_neighbors
