@@ -1,0 +1,7 @@
+import Lake
+open Lake DSL
+
+package mathResearch where
+
+lean_lib MathResearch where
+  roots := #[`MathResearch.Smoke]
